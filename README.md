@@ -1,6 +1,12 @@
 # Gestão de Vagas - Spring Boot
 
-Este repositório contém uma aplicação de **Gestão de Vagas** desenvolvida com o framework **Spring Boot**. A aplicação permite a gestão de candidatos para vagas de emprego, com funcionalidades para cadastro, atualização e visualização de candidatos e suas respectivas informações.
+Este repositório contém uma aplicação API Rest de **Gestão de Vagas** para controle de Empresas, Vagas e aplicações, utilizando dos principais pacotes de Spring Boot para
+persistencia, segurança e autorização. 
+
+Desenvolvida com o framework **Spring Boot**.
+
+A aplicação permite a gestão de candidatos para vagas de emprego, com funcionalidades para cadastro e visualização de candidatos e suas respectivas informações.
+
 
 ## Funcionalidades
 
