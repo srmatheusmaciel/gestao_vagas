@@ -1,5 +1,6 @@
 package br.com.matheusmaciel.gestao_vagas.modules.candidate.dto;
 
+import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,9 +9,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class AuthCandidateResponseDTO {
-  private String access_token;
-  private Long expires_in;
+@AllArgsConstructor
+public class ProfileCandidateResponseDTO {
+
+  private String description;
+  private String username;
+  private String email;
+  private UUID id;
+  private String name;
+
 }
