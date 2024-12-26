@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.matheusmaciel.gestao_vagas.exceptions.UserFoundException;
 import br.com.matheusmaciel.gestao_vagas.modules.candidate.CandidateEntity;
 import br.com.matheusmaciel.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.matheusmaciel.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
 import br.com.matheusmaciel.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
 import br.com.matheusmaciel.gestao_vagas.modules.candidate.useCases.ListAllJobsByFilterUseCase;
 import br.com.matheusmaciel.gestao_vagas.modules.candidate.useCases.ProfileCandidateUseCase;
@@ -70,12 +71,13 @@ public class CandidateController {
 
   @GetMapping("/job")
   @PreAuthorize("hasRole('CANDIDATE')")
-  @Tag(name = "Candidato", description = "Informações do candidato")
-  @Operation(summary = "Listagem de vagas disponível para o candidato", description = "Essa função é responsável por listar todas as vagas disponíveis, baseada no filtro")
+    @Tag(name = "Candidato", description = "Informações do candidato")
+  @Operation(summary = "Perfil do candidato", description = "Essa função é responsável por buscar as informações do perfil do candidato")
   @ApiResponses({
       @ApiResponse(responseCode = "200", content = {
-          @Content(array = @ArraySchema(schema = @Schema(implementation = JobEntity.class)))
-      })
+          @Content(schema = @Schema(implementation = ProfileCandidateResponseDTO.class))
+      }),
+      @ApiResponse(responseCode = "400", description = "User not found")
   })
   @SecurityRequirement(name = "jwt_auth")
   public List<JobEntity> findJobByFilter(@RequestParam String filter) {
