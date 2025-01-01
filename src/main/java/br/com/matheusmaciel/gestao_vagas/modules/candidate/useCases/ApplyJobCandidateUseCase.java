@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.matheusmaciel.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.matheusmaciel.gestao_vagas.exceptions.UserNotFoundException;
 import br.com.matheusmaciel.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.matheusmaciel.gestao_vagas.modules.candidate.repository.ApplyJobRepository;
 import br.com.matheusmaciel.gestao_vagas.modules.company.repositories.JobRepository;
 
 public class ApplyJobCandidateUseCase {
@@ -16,6 +17,9 @@ public class ApplyJobCandidateUseCase {
 
   @Autowired
   private CandidateRepository candidateRepository;
+
+  @Autowired
+  private ApplyJobRepository applyJobRepository;
 
   public void execute(UUID idCandidate, UUID idJob) {
 
