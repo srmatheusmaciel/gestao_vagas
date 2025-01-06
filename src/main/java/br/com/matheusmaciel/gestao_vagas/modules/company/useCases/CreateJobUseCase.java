@@ -11,18 +11,17 @@ import br.com.matheusmaciel.gestao_vagas.modules.company.repositories.JobReposit
 @Service
 public class CreateJobUseCase {
 
-
   @Autowired
   private JobRepository jobRepository;
 
-   @Autowired
+  @Autowired
   private CompanyRepository companyRepository;
 
-  public JobEntity execute(JobEntity jobEntity){
-      companyRepository.findById(jobEntity.getCompanyId()).orElseThrow(() -> {
-            throw new CompanyNotFoundException();
-        });
-            return this.jobRepository.save(jobEntity);
+  public JobEntity execute(JobEntity jobEntity) {
+    companyRepository.findById(jobEntity.getCompanyId()).orElseThrow(() -> {
+      throw new CompanyNotFoundException();
+    });
+    return this.jobRepository.save(jobEntity);
   }
 
 }
