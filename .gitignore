@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## script sonar
+script_sonar_powershell.txt
