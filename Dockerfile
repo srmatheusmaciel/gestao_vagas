@@ -1,15 +1,21 @@
-FROM ubuntu:latest AS build
+# Estágio de build
+FROM maven:3.9.4-eclipse-temurin-17 AS build
+WORKDIR /app
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+# Copia os arquivos necessários para o build
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
 COPY . .
+RUN mvn clean package -DskipTests
 
-RUN apt-get install maven -y
-RUN mvn clean install
-
+# Estágio de execução
 FROM openjdk:17-jdk-slim
+WORKDIR /app
 EXPOSE 8080
 
-COPY --from=build /target/gestao_vagas-0.0.1-SNAPSHOT.jar app.jar
+# Copia o artefato gerado no estágio de build
+COPY --from=build /app/target/gestao_vagas-0.0.1-SNAPSHOT.jar app.jar
 
+# Define o ponto de entrada da aplicação
 ENTRYPOINT ["java", "-jar", "app.jar"]
