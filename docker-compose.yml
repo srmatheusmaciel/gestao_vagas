@@ -3,10 +3,11 @@ version: '3.8'
 networks:
   gv-network:
     driver: bridge
-
 volumes:
   prometheus_data:
   grafana_data: 
+
+
 
 services:
   postgres:
@@ -18,8 +19,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
       - POSTGRES_DB=gestao_vagas_rocket
-    networks:
-      - gv-network
 
   prometheus:
     container_name: prometheus
@@ -31,29 +30,10 @@ services:
       - gv-network
     ports:
       - 9090:9090
-
   grafana:
     container_name: grafana
     image: grafana/grafana:latest
     ports:
-      - 3000:3000
+      - 3000:3000 
     networks:
-      - gv-network
-
-  # Serviço da aplicação
-  gestao_vagas_app:
-    container_name: gestao_vagas_app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    environment:
-      - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://gestao_vagas_postgres:5432/gestao_vagas_rocket
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=123
-    networks:
-      - gv-network
-    ports:
-      - 8080:8080
-    depends_on:
-      - postgres
+      - gv-network     
