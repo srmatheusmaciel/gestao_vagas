@@ -13,5 +13,13 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: temurin
+          java-version: 17
+      - name: Build project
+        run: mvn clean package
+      - name: Login Docker      
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}    
+      - name: Build docker image
+        run: docker build -t srmatheusmaciel/gestao_vagas .
+      - name: Publish image
+        run: docker push srmatheusmaciel/gestao_vagas
