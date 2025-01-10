@@ -2,11 +2,12 @@
 FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copia os arquivos necessários para o build
-COPY pom.xml .
+# Copia o arquivo pom.xml e faz o download das dependências
+COPY pom.xml . 
 RUN mvn dependency:go-offline
 
-COPY . .
+# Copia o restante dos arquivos e compila o projeto
+COPY . . 
 RUN mvn clean package -DskipTests
 
 # Estágio de execução
