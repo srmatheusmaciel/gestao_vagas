@@ -36,4 +36,4 @@ services:
     ports:
       - 3000:3000 
     networks:
-      - gv-network     
+      - gv-network
