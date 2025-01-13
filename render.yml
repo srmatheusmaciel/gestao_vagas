@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: gestao_vagas
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: jdbc:/postgresql://dpg-cu2m1o8gph6c73a7hbpg-a:5432/gestao_vagas_2tmu
+      - key: DATABASE_USERNAME
+        value: admin
+      - key: DATABASE_PASSWORD
+        value: TjZn819ef4b0FHxaPliNLIFhMKbfjfho
