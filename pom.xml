@@ -142,13 +142,6 @@
             <artifactId>maven-surefire-plugin</artifactId>
         </plugin>
 
-				<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-failsafe-plugin</artifactId>
-            <version>3.5.2</version>
-        
-        </plugin>
-
         <plugin>
             <groupId>org.sonarsource.scanner.maven</groupId>
             <artifactId>sonar-maven-plugin</artifactId>
@@ -180,15 +173,6 @@
             </executions>
         </plugin>
     </plugins>
-
-		<profiles>
-        <profile>
-            <id>docker</id>
-            <properties>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-    </profiles>
 </build>
 
 		
