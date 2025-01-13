@@ -7,7 +7,7 @@ COPY pom.xml .
 RUN mvn dependency:go-offline
 
 COPY . .
-RUN mvn clean package -DskipTests
+RUN mvn clean install -P docker
 
 # Estágio de execução
 FROM openjdk:17-jdk-slim
