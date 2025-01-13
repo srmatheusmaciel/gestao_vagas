@@ -1,15 +1,23 @@
 FROM ubuntu:latest AS build
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+# Atualiza e instala as dependências necessárias
+RUN apt-get update && apt-get install -y openjdk-17-jdk maven
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia todos os arquivos para o contêiner
 COPY . .
 
-RUN apt-get install maven -y
-RUN mvn clean install
+# Executa o build do projeto, ignorando os testes
+RUN mvn clean install -DskipTests
 
-FROM openjdk:17-jdk-slim 
+FROM openjdk:17-jdk-slim
+# Expõe a porta 8080
 EXPOSE 8080
 
-COPY --from=build /target/gestao_vagas-0.0.1-SNAPSHOT.jar app.jar
+# Copia o arquivo JAR gerado no estágio de build
+COPY --from=build /app/target/gestao_vagas-0.0.1-SNAPSHOT.jar app.jar
 
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
+# Define o comando de inicialização
+ENTRYPOINT ["java", "-jar", "app.jar"]
