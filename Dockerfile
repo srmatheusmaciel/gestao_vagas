@@ -1,24 +1,15 @@
-FROM ubuntu:latest AS build
+FROM maven:3.9.0-eclipse-temurin-17 AS build
 
-# Atualiza pacotes e instala Java 17
-RUN apt-get update && apt-get install -y openjdk-17-jdk maven
-
-# Define o diretório de trabalho
 WORKDIR /app
-
-# Copia os arquivos do projeto para a imagem
 COPY . .
 
-# Compila o projeto com Maven, ignorando os testes
+# Ignorar testes no build
 RUN mvn clean install -DskipTests
 
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-jammy
 
-# Define a porta exposta
-EXPOSE 8080
-
-# Copia o arquivo JAR gerado para a nova imagem
+WORKDIR /app
 COPY --from=build /app/target/gestao_vagas-0.0.1-SNAPSHOT.jar app.jar
 
-# Comando para executar o JAR
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
