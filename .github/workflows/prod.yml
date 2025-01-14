@@ -18,3 +18,15 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin' 
+      
+      - name: Build project
+        run: mvn clean install 
+      
+      - name: Login to Docker Hub
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+
+      - name: Build Docker image
+        run: docker build -t srmatheusmaciel/gestao_vagas .
+      
+      - name: Push Docker image
+        run: docker push srmatheusmaciel/gestao_vagas
