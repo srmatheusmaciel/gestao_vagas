@@ -46,10 +46,11 @@ public class AuthCandidateUseCase{
       throw new AuthenticationException();
   };
 
-   var roles = Arrays.asList("CANDIDATE");
+    var roles = Arrays.asList("CANDIDATE");
 
     Algorithm algorithm = Algorithm.HMAC256(secretKey);
     var expires_in = Instant.now().plus(Duration.ofMinutes(15));
+
     var token = JWT.create()
     .withIssuer("javagas")
     .withSubject(candidate.getId().toString())

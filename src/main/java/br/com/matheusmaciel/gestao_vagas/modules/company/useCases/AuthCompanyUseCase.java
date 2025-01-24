@@ -57,7 +57,7 @@ public class AuthCompanyUseCase {
      .withExpiresAt(expiresIn)
      .withIssuer("javagas")
      .withSubject(company.getId().toString())
-     .withClaim("roles", Arrays.asList("COMPANY"))
+     .withClaim("roles", roles)
      .sign(algorithm);
 
 
