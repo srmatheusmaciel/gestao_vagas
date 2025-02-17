@@ -1,6 +1,6 @@
 # Gestao Vagas API
 
-## Descricao
+## Descrição
 
 Gestao Vagas é uma API desenvolvida com Spring Boot para gerenciar vagas de emprego. Ele oferece funcionalidades para autenticacao, cadastro, listagem e gerenciamento de vagas, candidatos e empresas, utilizando um banco de dados PostgreSQL e seguranca com JWT.
 
@@ -30,13 +30,13 @@ Gestao Vagas é uma API desenvolvida com Spring Boot para gerenciar vagas de emp
 
 ## Como Executar o Projeto
 
-### Prerequisitos
+### Pre requisitos
 
 - Java 17+
 - Maven 3+
 - PostgreSQL configurado
 
-### Configuracao do Banco de Dados
+### Configuração do Banco de Dados
 
 Configure o arquivo `application.properties` com as credenciais do seu banco de dados:
 
@@ -61,11 +61,11 @@ spring.jpa.hibernate.ddl-auto=update
    ```sh
    mvn spring-boot:run
    ```
-4. A aplicacao estara disponivel em `http://localhost:8080`
+4. A aplicação estará disponível em `http://localhost:8080`
 
 ## Endpoints Principais
 
-### Autenticacao
+### Autenticação
 
 - `POST /candidate/auth/` - Realiza login e retorna o token JWT
 - `POST /company/auth/` - Realiza login e retorna o token JWT
@@ -97,9 +97,9 @@ Para executar os testes, utilize:
 mvn test
 ```
 
-## Contribuicao
+## Contribuição
 
-Contribuicoes sao bem-vindas! Para contribuir:
+Contribuições são bem-vindas! Para contribuir:
 
 1. Fork o repositório
 2. Crie um branch para sua feature: `git checkout -b minha-feature`
@@ -107,7 +107,7 @@ Contribuicoes sao bem-vindas! Para contribuir:
 4. Faça push para o branch: `git push origin minha-feature`
 5. Abra um Pull Request
 
-## Licenca
+## Licença
 
-Este projeto esta sob a licenca MIT. Para mais detalhes, consulte o arquivo `LICENSE`.
+Este projeto esta sob a licença MIT. Para mais detalhes, consulte o arquivo `LICENSE`.
 
