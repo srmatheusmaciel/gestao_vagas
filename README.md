@@ -51,7 +51,7 @@ spring.jpa.hibernate.ddl-auto=update
 
 1. Clone o repositório:
    ```sh
-   git clone https://github.com/seu-usuario/gestao_vagas.git
+   git clone https://github.com/srmatheusmaciel/gestao_vagas.git
    ```
 2. Acesse a pasta do projeto:
    ```sh
