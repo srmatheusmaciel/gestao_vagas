@@ -2,7 +2,7 @@
 
 ## Descricao
 
-Gestao Vagas API e um microservico desenvolvido com Spring Boot para gerenciar vagas de emprego. Ele oferece funcionalidades para autenticacao, cadastro, listagem e gerenciamento de vagas, candidatos e empresas, utilizando um banco de dados PostgreSQL e seguranca com JWT.
+Gestao Vagas é uma API desenvolvida com Spring Boot para gerenciar vagas de emprego. Ele oferece funcionalidades para autenticacao, cadastro, listagem e gerenciamento de vagas, candidatos e empresas, utilizando um banco de dados PostgreSQL e seguranca com JWT.
 
 ## Tecnologias Utilizadas
 
