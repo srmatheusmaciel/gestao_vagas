@@ -1,33 +1,113 @@
-# Gestão de Vagas - Spring Boot
+# Gestao Vagas API
 
-Este repositório contém uma aplicação API Rest de **Gestão de Vagas** para controle de Empresas, Vagas e aplicações, utilizando dos principais pacotes de Spring Boot para
-persistencia, segurança e autorização. 
+## Descricao
 
-Desenvolvida com o framework **Spring Boot**.
+Gestao Vagas API e um microservico desenvolvido com Spring Boot para gerenciar vagas de emprego. Ele oferece funcionalidades para autenticacao, cadastro, listagem e gerenciamento de vagas, candidatos e empresas, utilizando um banco de dados PostgreSQL e seguranca com JWT.
 
-A aplicação permite a gestão de candidatos para vagas de emprego, com funcionalidades para cadastro e visualização de candidatos e suas respectivas informações.
+## Tecnologias Utilizadas
 
+- **Java 17**
+- **Spring Boot 3.4.0**
+- **Spring Security** (JWT para autenticacao)
+- **Spring Data JPA** (persistencia de dados)
+- **PostgreSQL** (banco de dados)
+- **H2 Database** (para testes)
+- **Lombok** (para reduzir codigo boilerplate)
+- **Springdoc OpenAPI** (documentacao da API com Swagger)
+- **Prometheus & Actuator** (monitoramento da aplicacao)
+- **JUnit & Spring Security Test** (testes unitarios e de seguranca)
 
 ## Funcionalidades
 
-- Cadastro de candidatos com informações como nome, email, username, senha, descrição e currículo.
-- Validação de dados de entrada (como formato de email e senha).
-- Criação e persistência dos dados no banco de dados **PostgreSQL**.
+- **Autenticacao e Autorizacao:** Utilizacao de JWT para seguranca dos endpoints.
+- **Gerenciamento de Vagas:** Criacao e listagem de vagas.
+- **Cadastro e Gerenciamento de Empresas:** Registro e administracao de empresas.
+- **Cadastro e Gerenciamento de Candidatos:** Registro e listagem de candidatos.
+- **Associacao de Vagas a Empresas:** Permite vincular vagas a empresas especificas.
+- **Testes Automatizados:** Implementacao de testes com JUnit e Spring Security Test.
+- **Monitoramento:** Integracao com Prometheus e Actuator para metricas da aplicacao.
+- **Documentacao da API:** Integracao com Springdoc OpenAPI para geracao automatica da documentacao via Swagger.
 
-## Tecnologias
+## Como Executar o Projeto
 
-- **Java 17** - Linguagem de programação utilizada.
-- **Spring Boot 3.x** - Framework principal para desenvolvimento de aplicações Java.
-- **PostgreSQL** - Banco de dados utilizado para persistência de dados.
-- **Docker** - Utilizado para criar e gerenciar o ambiente de banco de dados.
-- **JPA (Hibernate)** - Utilizado para mapeamento objeto-relacional (ORM) com o banco de dados.
-- **Lombok** - Biblioteca para simplificar o código Java, reduzindo a verbosidade.
+### Prerequisitos
 
-## Pré-requisitos
+- Java 17+
+- Maven 3+
+- PostgreSQL configurado
 
-Antes de executar o projeto, certifique-se de ter o seguinte instalado na sua máquina:
+### Configuracao do Banco de Dados
 
-- [Java 17](https://adoptopenjdk.net/)
-- [Maven](https://maven.apache.org/)
-- [Docker](https://www.docker.com/)
+Configure o arquivo `application.properties` com as credenciais do seu banco de dados:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/gestao_vagas
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.jpa.hibernate.ddl-auto=update
+```
+
+### Executando o Projeto
+
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/seu-usuario/gestao_vagas.git
+   ```
+2. Acesse a pasta do projeto:
+   ```sh
+   cd gestao_vagas
+   ```
+3. Compile e execute a aplicacao:
+   ```sh
+   mvn spring-boot:run
+   ```
+4. A aplicacao estara disponivel em `http://localhost:8080`
+
+## Endpoints Principais
+
+### Autenticacao
+
+- `POST /auth/login` - Realiza login e retorna o token JWT
+
+### Empresas
+
+- `GET /empresas` - Lista todas as empresas
+- `POST /empresas` - Cria uma nova empresa
+
+### Vagas
+
+- `GET /jobs` - Lista todas as vagas
+- `POST /jobs` - Cria uma nova vaga (requer autenticacao)
+
+### Candidatos
+
+- `GET /candidates` - Lista todos os candidatos
+- `POST /candidates` - Cria novos candidatos
+
+### Monitoramento
+
+- `GET /actuator/health` - Verifica a saude da aplicacao
+- `GET /actuator/prometheus` - Exibe metricas para Prometheus
+
+## Testes
+
+Para executar os testes, utilize:
+
+```sh
+mvn test
+```
+
+## Contribuicao
+
+Contribuicoes sao bem-vindas! Para contribuir:
+
+1. Fork o repositório
+2. Crie um branch para sua feature: `git checkout -b minha-feature`
+3. Faça commit das mudanças: `git commit -m 'Adiciona minha feature'`
+4. Faça push para o branch: `git push origin minha-feature`
+5. Abra um Pull Request
+
+## Licenca
+
+Este projeto esta sob a licenca MIT. Para mais detalhes, consulte o arquivo `LICENSE`.
 
