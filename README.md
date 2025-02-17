@@ -67,22 +67,22 @@ spring.jpa.hibernate.ddl-auto=update
 
 ### Autenticacao
 
-- `POST /auth/login` - Realiza login e retorna o token JWT
+- `POST /candidate/auth/` - Realiza login e retorna o token JWT
+- `POST /company/auth/` - Realiza login e retorna o token JWT
 
 ### Empresas
 
-- `GET /empresas` - Lista todas as empresas
-- `POST /empresas` - Cria uma nova empresa
+- `POST /company` - Cria uma nova empresa
 
 ### Vagas
 
-- `GET /jobs` - Lista todas as vagas
-- `POST /jobs` - Cria uma nova vaga (requer autenticacao)
+- `GET /company/job"` - Lista todas as vagas
+- `POST /company/job` - Cria uma nova vaga (requer autenticacao)
 
 ### Candidatos
 
-- `GET /candidates` - Lista todos os candidatos
-- `POST /candidates` - Cria novos candidatos
+- `GET /candidate` - Lista todos os candidatos
+- `POST /candidate` - Cria novos candidatos
 
 ### Monitoramento
 
